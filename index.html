@@ -1,63 +1,330 @@
-NOVA
-	•	车型
-	•	性能
-	•	技术
-	•	联系
-立即订购
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOVA MOTORS — 未来驾驶</title>
+  <!-- UI UX Pro Max Design System: Cyber-Tech · Glassmorphism + Neon Accents -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *,:after,:before{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:70px}
+    body{font-family:Inter,sans-serif;background:#05080f;color:#f0f4f8;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    ::selection{background:#dc2626;color:#fff}
 
+    :root{
+      --bg:#05080f;--bg2:#0a0f1a;--card:rgba(15,23,42,0.5);
+      --accent:#dc2626;--accent2:#ef4444;--neon:rgba(220,38,38,0.3);
+      --text:#f0f4f8;--muted:rgba(255,255,255,0.4);
+      --border:rgba(255,255,255,0.06);
+      --font-display:Orbitron,sans-serif;--font-body:Inter,sans-serif;
+      --glow:0 0 40px rgba(220,38,38,0.15);
+    }
 
-驱动未来
-Nova Motors 全电动豪华轿车，零排放、零妥协。 0-100km/h 仅需 2.1 秒，续航 1,000 公里。
-预约试驾 → 探索车型
+    /* === NAV === */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;padding:0 2.5rem;
+      display:flex;align-items:center;justify-content:space-between;
+      background:rgba(5,8,15,0.8);backdrop-filter:blur(24px) saturate(1.4);
+      -webkit-backdrop-filter:blur(24px) saturate(1.4);
+      border-bottom:1px solid var(--border)}
+    .nav-logo{font-family:var(--font-display);font-size:1.15rem;letter-spacing:.15em;
+      background:linear-gradient(135deg,#fff 30%,var(--accent));-webkit-background-clip:text;
+      -webkit-text-fill-color:transparent}
+    .nav-links{display:flex;gap:2.5rem;list-style:none}
+    .nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);letter-spacing:.06em;
+      transition:color .3s;position:relative}
+    .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;
+      background:var(--accent);transition:width .3s}
+    .nav-links a:hover{color:#fff}
+    .nav-links a:hover::after{width:100%}
+    .nav-cta{background:var(--accent);color:#fff;padding:.55rem 1.6rem;border-radius:4px;
+      font-size:.8rem;font-weight:600;letter-spacing:.03em;transition:all .3s;
+      box-shadow:var(--glow)}
+    .nav-cta:hover{background:var(--accent2);box-shadow:0 0 60px var(--neon);transform:translateY(-1px)}
 
-车型系列
-全系电动， 由你定义
+    /* === HERO === */
+    .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+      align-items:center;text-align:center;position:relative;overflow:hidden;padding:80px 2rem 2rem}
+    .hero-video{position:absolute;top:0;left:0;width:100%;height:100%;
+      object-fit:cover;z-index:0;filter:blur(2px) brightness(.6);transform:scale(1.03)}
+    .hero-overlay{position:absolute;inset:0;z-index:1;
+      background:radial-gradient(ellipse 80% 50% at 50% 50%,rgba(5,8,15,0.3),rgba(5,8,15,0.85) 70%)}
+    .hero-grid{position:absolute;inset:0;z-index:1;opacity:.04;
+      background-image:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);
+      background-size:48px 48px}
+    .hero>:not(.hero-video):not(.hero-overlay):not(.hero-grid){position:relative;z-index:2}
+    .hero-badge{display:inline-block;padding:.35rem 1rem;border:1px solid rgba(220,38,38,.3);
+      border-radius:100px;font-size:.7rem;letter-spacing:.1em;color:var(--accent);
+      margin-bottom:1.5rem;background:rgba(220,38,38,.08)}
+    .hero h1{font-family:var(--font-display);font-size:clamp(2.8rem,8vw,6rem);
+      line-height:1.05;margin-bottom:.5rem;font-weight:900;
+      background:linear-gradient(135deg,#fff 30%,var(--accent) 70%,#fff);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .hero-sub{font-size:clamp(1rem,1.8vw,1.35rem);font-weight:300;
+      color:var(--muted);margin-bottom:2.5rem;max-width:560px}
+    .hero-buttons{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+    .btn-p{background:var(--accent);color:#fff;padding:.9rem 2.8rem;border-radius:4px;
+      font-weight:600;font-size:.9rem;transition:all .3s;box-shadow:var(--glow);
+      display:inline-flex;align-items:center;gap:.6rem}
+    .btn-p:hover{background:var(--accent2);box-shadow:0 0 60px var(--neon);transform:translateY(-2px)}
+    .btn-s{border:1px solid rgba(255,255,255,.2);color:#fff;padding:.9rem 2.8rem;
+      border-radius:4px;font-weight:600;font-size:.9rem;transition:all .3s;
+      display:inline-flex;align-items:center;gap:.6rem}
+    .btn-s:hover{border-color:rgba(255,255,255,.5);transform:translateY(-2px)}
 
-Nova Model S
-续航 1,000km · 0-100km/h 2.1s
-双电机全轮驱动 · 自动驾驶标配
-¥589,000 起
-了解详情 →
+    /* === SECTIONS === */
+    section{padding:7rem 2rem}
+    .container{max-width:1200px;margin:0 auto}
+    .section-label{font-family:var(--font-display);font-size:.65rem;letter-spacing:.2em;
+      color:var(--accent);margin-bottom:.4rem}
+    .section-title{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.8rem);
+      font-weight:700;margin-bottom:1rem;
+      background:linear-gradient(135deg,#fff 40%,rgba(255,255,255,.6));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .section-desc{color:var(--muted);max-width:580px;margin-bottom:3rem}
 
-Nova Model X
-续航 900km · 0-100km/h 2.6s
-七座SUV · 鹰翼门
-¥659,000 起
-了解详情 →
+    /* === VEHICLE CARDS === */
+    .vehicle-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
+    .vehicle-card{position:relative;border-radius:16px;overflow:hidden;
+      background:var(--card);border:1px solid var(--border);
+      transition:all .4s cubic-bezier(.25,.46,.45,.94)}
+    .vehicle-card:hover{transform:translateY(-8px);border-color:rgba(220,38,38,.3);
+      box-shadow:0 20px 60px rgba(0,0,0,.5)}
+    .vehicle-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
+      background:linear-gradient(90deg,transparent,var(--neon),transparent);opacity:0;
+      transition:opacity .4s}
+    .vehicle-card:hover::before{opacity:1}
+    .vehicle-card-image{height:220px;position:relative;overflow:hidden;
+      background:linear-gradient(135deg,#0a0f1a,#1a1a2e)}
+    .vehicle-card-image .car-img{width:100%;height:100%;object-fit:cover;opacity:.85;
+      transition:transform .6s,opacity .4s}
+    .vehicle-card:hover .car-img{transform:scale(1.05);opacity:1}
+    .vehicle-card-image .tag{position:absolute;top:12px;left:12px;padding:.25rem .7rem;
+      border-radius:4px;font-size:.65rem;font-weight:600;letter-spacing:.05em;
+      background:rgba(220,38,38,.85);color:#fff;backdrop-filter:blur(8px)}
+    .vehicle-card-body{padding:1.5rem 1.5rem 1.8rem}
+    .vehicle-card-body h3{font-family:var(--font-display);font-size:1.1rem;margin-bottom:.4rem}
+    .vehicle-card-body .spec{font-size:.8rem;color:var(--muted);margin-bottom:.2rem}
+    .vehicle-card-body .price{font-size:1.25rem;font-weight:700;margin:.8rem 0 1rem;
+      background:linear-gradient(135deg,#fff,var(--accent));-webkit-background-clip:text;
+      -webkit-text-fill-color:transparent}
+    .vehicle-link{color:var(--accent);font-size:.85rem;font-weight:500;transition:gap .3s;
+      display:inline-flex;align-items:center;gap:.4rem}
+    .vehicle-link:hover{gap:.8rem}
 
-Nova Model 3
-续航 650km · 0-100km/h 3.3s
-后驱/四驱可选 · 最亲民
-¥289,000 起
-了解详情 →
-性能数据
-重新定义 速度与续航
-2.1s
-0-100km/h 加速
-1,000km
-CLTC 续航里程
-322km/h
-最高时速
-1,030hp
-最大马力
-核心技术
-不只是汽车， 是科技平台
-🔋
-4680 电池组
-新一代无极耳电芯，能量密度提升 50%，续航里程突破极限。
-🧠
-自动驾驶 HW 4.0
-全车 12 个摄像头 + 雷达 + 超声波，算力 144 TOPS，持续 OTA 升级。
-⚡
-V3 超充网络
-超级充电桩 15 分钟补充 80% 电量，覆盖全国主要高速公路。
-准备好了吗？
-预约试驾或在线订购，体验未来出行的魅力。
-📞 88888
-预约试驾 → 配置车型
-隐私政策
-服务条款
-联系我们
-加入我们
-© 2026 Nova Motors. 本网站为演示用途，仿 Tesla 设计风格。
-Design System by UI UX Pro Max · Built with Astro-ready HTML/CSS
+    /* === SPECS === */
+    .specs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;
+      background:var(--border);border-radius:16px;overflow:hidden}
+    .spec-item{background:var(--card);padding:2.5rem 2rem;text-align:center;
+      transition:background .3s}
+    .spec-item:hover{background:rgba(15,23,42,.8)}
+    .spec-item .num{font-family:var(--font-display);font-size:2.8rem;font-weight:700;
+      background:linear-gradient(135deg,#fff,var(--accent));-webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;line-height:1}
+    .spec-item .num small{font-size:1.2rem;-webkit-text-fill-color:var(--accent)}
+    .spec-item .lbl{font-size:.8rem;color:var(--muted);margin-top:.4rem;letter-spacing:.03em}
+
+    /* === TECH === */
+    .tech-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+    .tech-item{position:relative;padding:2rem;border-radius:14px;border:1px solid var(--border);
+      background:var(--card);overflow:hidden;transition:border-color .3s}
+    .tech-item:hover{border-color:rgba(220,38,38,.3)}
+    .tech-item .icon{font-size:1.8rem;margin-bottom:.8rem;display:block}
+    .tech-item h3{font-size:1rem;margin-bottom:.6rem}
+    .tech-item p{font-size:.85rem;color:var(--muted);line-height:1.6}
+
+    /* === CTA === */
+    .cta{padding:7rem 2rem;text-align:center;
+      background:linear-gradient(180deg,transparent,rgba(220,38,38,.04),transparent);
+      border-top:1px solid var(--border)}
+    .cta h2{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.5rem);margin-bottom:.8rem}
+    .cta p{color:var(--muted);margin-bottom:1rem}
+    .cta-phone{font-family:var(--font-display);font-size:2.2rem;font-weight:700;
+      background:linear-gradient(135deg,var(--accent),#fff);-webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;margin:1rem 0 1.5rem}
+
+    /* === FOOTER === */
+    footer{padding:2.5rem 2rem;text-align:center;border-top:1px solid var(--border)}
+    footer .links{display:flex;justify-content:center;gap:1.8rem;flex-wrap:wrap;margin-bottom:1rem}
+    footer .links a{font-size:.75rem;color:var(--muted);transition:color .3s}
+    footer .links a:hover{color:#fff}
+    footer p{font-size:.7rem;color:rgba(255,255,255,.15)}
+
+    /* === ANIMATIONS === */
+    @keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes scaleIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+    .animate{animation:fadeUp .7s cubic-bezier(.25,.46,.45,.94) both}
+    .animate:nth-child(2){animation-delay:.12s}
+    .animate:nth-child(3){animation-delay:.24s}
+    .animate:nth-child(4){animation-delay:.36s}
+    .animate-scale{animation:scaleIn .6s cubic-bezier(.25,.46,.45,.94) both}
+
+    /* === RESPONSIVE === */
+    @media(max-width:768px){
+      nav{padding:0 1.2rem}
+      .nav-links{display:none}
+      section{padding:5rem 1.2rem}
+      .vehicle-grid,.tech-grid{grid-template-columns:1fr}
+      .specs-grid{grid-template-columns:repeat(2,1fr)}
+      .hero{padding:100px 1.2rem 2rem}
+    }
+
+    /* === PARTICLE EFFECT === */
+    .particle{position:fixed;width:2px;height:2px;background:rgba(255,255,255,.15);
+      border-radius:50%;pointer-events:none;z-index:-1}
+  </style>
+</head>
+<body>
+
+  <!-- Particles -->
+  <script>for(let i=0;i<30;i++){let p=document.createElement('div');p.className='particle';
+    p.style.left=Math.random()*100+'%';p.style.top=Math.random()*100+'%';
+    p.style.animation=`fadeUp ${5+Math.random()*5}s infinite`;
+    p.style.animationDelay=Math.random()*5+'s';document.body.appendChild(p)}</script>
+
+  <!-- === NAV === -->
+  <nav>
+    <div class="nav-logo">NOVA</div>
+    <ul class="nav-links">
+      <li><a href="#vehicles">车型</a></li>
+      <li><a href="#specs">性能</a></li>
+      <li><a href="#tech">技术</a></li>
+      <li><a href="#cta">联系</a></li>
+    </ul>
+    <a href="#cta" class="nav-cta">立即订购</a>
+  </nav>
+
+  <!-- === HERO === -->
+  <section class="hero" id="hero">
+    <video class="hero-video" autoplay muted loop playsinline
+      poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'%3E%3Crect fill='%2305080f' width='1200' height='800'/%3E%3C/svg%3E">
+      <source src="hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-badge animate">⚡ 2026 全新旗舰</div>
+    <h1 class="animate">NOVA MOTORS</h1>
+    <p class="hero-sub animate">纯电动豪华轿跑 · 零排放，零妥协。<br>2.1 秒破百 · 1,000 公里续航 · 自动驾驶标配</p>
+    <div class="hero-buttons animate">
+      <a href="#cta" class="btn-p">预约试驾 →</a>
+      <a href="#vehicles" class="btn-s">探索车型</a>
+    </div>
+  </section>
+
+  <!-- === VEHICLES === -->
+  <section id="vehicles">
+    <div class="container">
+      <p class="section-label animate">01 · 车型系列</p>
+      <h2 class="section-title animate">重新定义<br>电动出行</h2>
+      <p class="section-desc animate">每一款 NOVA 车型都是科技与美学的巅峰之作，为不同需求的你打造。</p>
+      <div class="vehicle-grid">
+
+        <div class="vehicle-card animate-scale">
+          <div class="vehicle-card-image">
+            <span class="tag">旗舰轿跑</span>
+            <img class="car-img" src="model-s.jpg"
+              alt="Model S" loading="lazy" onerror="this.style.display='none'">
+          </div>
+          <div class="vehicle-card-body">
+            <h3>NOVA Model S</h3>
+            <p class="spec">续航 1,000km · 0-100km/h 2.1s</p>
+            <p class="spec">双电机全驱 · Plaid 模式</p>
+            <p class="price">¥589,000 起</p>
+            <a href="model-s.html" class="vehicle-link">了解详情 →</a>
+          </div>
+        </div>
+
+        <div class="vehicle-card animate-scale">
+          <div class="vehicle-card-image">
+            <span class="tag">全能 SUV</span>
+            <img class="car-img" src="model-x.jpg"
+              alt="Model X" loading="lazy" onerror="this.style.display='none'">
+          </div>
+          <div class="vehicle-card-body">
+            <h3>NOVA Model X</h3>
+            <p class="spec">续航 900km · 0-100km/h 2.6s</p>
+            <p class="spec">七座布局 · 鹰翼门</p>
+            <p class="price">¥659,000 起</p>
+            <a href="model-x.html" class="vehicle-link">了解详情 →</a>
+          </div>
+        </div>
+
+        <div class="vehicle-card animate-scale">
+          <div class="vehicle-card-image">
+            <span class="tag">全民电动</span>
+            <img class="car-img" src="model-3.jpg"
+              alt="Model 3" loading="lazy" onerror="this.style.display='none'">
+          </div>
+          <div class="vehicle-card-body">
+            <h3>NOVA Model 3</h3>
+            <p class="spec">续航 650km · 0-100km/h 3.3s</p>
+            <p class="spec">后驱 / 四驱可选</p>
+            <p class="price">¥289,000 起</p>
+            <a href="model-3.html" class="vehicle-link">了解详情 →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- === SPECS === -->
+  <section id="specs">
+    <div class="container">
+      <p class="section-label animate">02 · 性能数据</p>
+      <h2 class="section-title animate">数字背后<br>是工程的极限</h2>
+      <p class="section-desc animate">每一项数据都来自无数次测试与优化。</p>
+      <div class="specs-grid">
+        <div class="spec-item animate"><div class="num">2.1<small>s</small></div><div class="lbl">0-100 km/h 加速</div></div>
+        <div class="spec-item animate"><div class="num">1,000<small>km</small></div><div class="lbl">CLTC 续航里程</div></div>
+        <div class="spec-item animate"><div class="num">322<small>km/h</small></div><div class="lbl">最高时速</div></div>
+        <div class="spec-item animate"><div class="num">1,030<small>hp</small></div><div class="lbl">最大马力</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === TECH === -->
+  <section id="tech">
+    <div class="container">
+      <p class="section-label animate">03 · 核心技术</p>
+      <h2 class="section-title animate">不只是汽车<br>是科技平台</h2>
+      <p class="section-desc animate">从电池到芯片，每一项都重新定义了行业标准。</p>
+      <div class="tech-grid">
+        <div class="tech-item animate"><span class="icon">🔋</span><h3>4680 电池组</h3><p>无极耳电芯技术，能量密度提升 50%，续航里程突破极限。结构电池包一体化设计，更低重心，更高刚性。</p></div>
+        <div class="tech-item animate"><span class="icon">🧠</span><h3>自动驾驶 HW 4.0</h3><p>全车 12 个高清摄像头 + 雷达 + 超声波传感器，算力高达 144 TOPS，持续 OTA 空中升级。</p></div>
+        <div class="tech-item animate"><span class="icon">⚡</span><h3>V3 超充网络</h3><p>超级充电桩 15 分钟补充 80% 电量，覆盖全国主要高速公路和城市核心区，让长途出行无忧。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === CTA === -->
+  <section class="cta" id="cta">
+    <div class="container">
+      <p class="section-label animate">04 · 立即行动</p>
+      <h2 class="animate">准备好了吗？</h2>
+      <p class="animate">预约试驾或在线订购，体验未来出行的魅力。</p>
+      <div class="cta-phone animate">📞 114514</div>
+      <div class="hero-buttons animate">
+        <a href="#" class="btn-p">预约试驾 →</a>
+        <a href="#" class="btn-s">配置车型</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- === FOOTER === -->
+  <footer>
+    <div class="links">
+      <a href="#">隐私政策</a>
+      <a href="#">服务条款</a>
+      <a href="#">联系我们</a>
+      <a href="#">加入我们</a>
+    </div>
+    <p>© 2026 NOVA MOTORS. 本网站为演示用途。</p>
+    <p style="margin-top:.3rem">Design System by UI UX Pro Max · Cyber-Tech Edition</p>
+  </footer>
+
+</body>
+</html>
